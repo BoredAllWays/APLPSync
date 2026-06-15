@@ -1,0 +1,15 @@
+# Google API Service Account Key
+aplpsynckey.json
+
+# Bot Configurations & Gemini API Key
+config.json
+
+# Local Node Dependencies
+node_modules/
+
+# Any local log or debug files
+*.log
+full_doc_data.json
+
+
+
