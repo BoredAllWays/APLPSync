@@ -12,5 +12,6 @@ node_modules/
 *.log
 full_doc_data.json
 
-
+#.env
+.env
 

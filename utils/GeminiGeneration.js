@@ -1,5 +1,4 @@
 const { GoogleGenAI } = require("@google/genai");
-const { GeminiApiKey } = require("../config.json");
 
 class GeminiGeneration {
     static async generateRecap(rawText) {
@@ -9,7 +8,7 @@ class GeminiGeneration {
             );
         }
 
-        const ai = new GoogleGenAI({ apiKey: GeminiApiKey });
+        const ai = new GoogleGenAI({});
 
         const systemInstruction = `You are an automated Discord sync engine. Your sole job is to transform raw meeting minutes into a highly structured Discord recap.
 CRITICAL RULES:

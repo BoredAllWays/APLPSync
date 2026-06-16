@@ -1,12 +1,11 @@
 const { google } = require("googleapis");
-const keys = require("../aplpsynckey.json");
-const { documentId } = require("../config.json");
 
+const documentId = process.env.DOCUMENT_ID;
 class DocumentExtraction {
     static _getAuthClient() {
         return new google.auth.JWT({
-            email: keys.client_email,
-            key: keys.private_key,
+            email: process.env.GOOGLE_CLIENT_EMAIL,
+            key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
             scopes: ["https://www.googleapis.com/auth/documents.readonly"],
         });
     }

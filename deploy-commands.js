@@ -1,5 +1,7 @@
+require("dotenv").config();
 const { REST, Routes } = require("discord.js");
-const { clientId, botToken } = require("./config.json");
+const token = process.env.DISCORD_TOKEN;
+const clientId = process.env.DISCORD_CLIENT_ID;
 const fs = require("node:fs");
 const path = require("node:path");
 
@@ -25,7 +27,7 @@ for (const folder of commandFolders) {
     }
 }
 
-const rest = new REST().setToken(botToken);
+const rest = new REST().setToken(token);
 
 (async () => {
     try {
