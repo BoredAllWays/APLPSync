@@ -1,4 +1,13 @@
 require("dotenv").config();
+//gemini came up with this method in the following code block to host my bot as a web server for free
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000;
+app.get("/", (req, res) => res.send("APLP Bot is alive and running!"));
+app.listen(port, () =>
+    console.log(`Dummy web server listening on port ${port}`),
+);
+//Everything else is my code
 const fs = require("node:fs");
 const path = require("node:path");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
