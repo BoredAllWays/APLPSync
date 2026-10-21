@@ -24,7 +24,6 @@ ${rawText}
 ---
 BLUEPRINT TEMPLATE:
 **DATE:** [Extract Meeting Date]
-**ATTENDANCE:** [List of attendees present]
 
 **SUMMARY:**
 🔹 __General Updates__
