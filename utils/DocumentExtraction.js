@@ -11,7 +11,7 @@ class DocumentExtraction {
     });
   }
 
-  // Pass in how many closest tabs you want (defaults to 1)
+  // Pass in how many recent tabs you want (defaults to 1 for the most recent meeting)
   static async getClosestTabs(numberOfTabs = 1) {
     try {
       const auth = this._getAuthClient();
@@ -34,18 +34,22 @@ class DocumentExtraction {
         return 'No date tabs found in the document.';
       }
 
-      // 2. Sort them by how close they are to the current date/time
       const currentDate = new Date();
-      allDateTabs.sort((a, b) => {
-        const diffA = Math.abs(a.date - currentDate);
-        const diffB = Math.abs(b.date - currentDate);
-        return diffA - diffB; // Smallest difference comes first
-      });
 
-      // 3. Take the top N closest tabs
-      const closestTabs = allDateTabs.slice(0, numberOfTabs);
+      // 2. Filter out future dates so we only look at past/current meetings
+      const pastTabs = allDateTabs.filter((item) => item.date <= currentDate);
 
-      // 4. Extract the text (including any subtabs they have)
+      if (pastTabs.length === 0) {
+        return 'No past meeting tabs found.';
+      }
+
+      // 3. Sort them in descending order (newest past date comes first)
+      pastTabs.sort((a, b) => b.date - a.date);
+
+      // 4. Take the top N most recent tabs
+      const closestTabs = pastTabs.slice(0, numberOfTabs);
+
+      // 5. Extract the text (including any subtabs they have)
       let finalOutput = '';
       for (const item of closestTabs) {
         finalOutput += this._extractTabTree(item.tab);
@@ -112,4 +116,4 @@ class DocumentExtraction {
 }
 
 module.exports = DocumentExtraction;
-odule.exports = DocumentExtraction;
+dule.exports = DocumentExtraction;
