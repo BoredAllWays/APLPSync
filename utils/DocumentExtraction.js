@@ -116,4 +116,3 @@ class DocumentExtraction {
 }
 
 module.exports = DocumentExtraction;
-dule.exports = DocumentExtraction;

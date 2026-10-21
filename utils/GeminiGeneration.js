@@ -56,4 +56,3 @@ BLUEPRINT TEMPLATE:
 }
 
 module.exports = GeminiGeneration;
-odule.exports = GeminiGeneration;
